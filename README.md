@@ -1,6 +1,6 @@
 # MultiPart
 
-TODO: Write a gem description
+This library provides the multipart form post functionality.
 
 ## Installation
 

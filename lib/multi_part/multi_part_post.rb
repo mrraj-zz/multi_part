@@ -1,6 +1,6 @@
 module MultiPart
 
-  class Post
+  class MultiPartPost
     BOUNDARY = "----RubyMultiPartPost#{rand(1000000)}"
 
     def initialize(url, fileparams)
@@ -33,15 +33,23 @@ module MultiPart
       begin
         @multi_parts, @multi_streams = [], []
         @fileparams.each do |field_name, file_path|
-          @multi_parts << StringPart.new(BOUNDARY, field_name, extract_filename(file_path))
+          @multi_parts << StringPart.new(string_part(field_name, extract_filename(file_path)))
           stream = File.open(file_name, "rb")
           @multi_streams << stream
           @multi_parts << StreamPart.new(stream)
         end
+        @multi_parts << StringPart.new("--#{BOUNDARY}--")
         MultiPartStream.new(@multi_parts)
       rescue Exception => exception
         STDOUT.puts exception
       end
+    end
+
+    def string_part(field_name, file_name)
+      <<-EOF--#{BOUNDARY}
+        Content-Disposition: form-data; name="#{field_name}"; filename="#{file_name}"
+        Content-Type: video/x-msvideo
+      EOF
     end
 
     def extract_filename(file_path)
