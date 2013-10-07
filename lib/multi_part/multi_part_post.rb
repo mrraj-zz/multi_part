@@ -27,8 +27,6 @@ module MultiPart
       request
     end
 
-
-
     def multipart_stream
       begin
         @multi_parts, @multi_streams = [], []
