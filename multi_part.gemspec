@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Mohanraj R"]
   spec.email         = ["mohanraj.ramanujam@gmail.com"]
   spec.description   = %q{Multipart form post}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.summary       = %q{Multipart form post}
   spec.homepage      = "https://github.com/mohanraj-ramanujam/multi_part"
   spec.license       = "MIT"
 
