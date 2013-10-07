@@ -1,10 +1,16 @@
 module MultiPart
 
   class StreamPart
-    delegate :size, :read, :to => :@stream
-
     def initialize(stream)
       @stream = stream
+    end
+
+    def size
+      @stream.size
+    end
+
+    def read
+      @stream.read
     end
   end
 end
