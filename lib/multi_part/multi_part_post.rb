@@ -44,10 +44,11 @@ module MultiPart
     end
 
     def string_part(field_name, file_name)
-      <<-EOF--#{BOUNDARY}
+      <<EOF
+        --#{BOUNDARY}
         Content-Disposition: form-data; name="#{field_name}"; filename="#{file_name}"
         Content-Type: video/x-msvideo
-      EOF
+EOF
     end
 
     def extract_filename(file_path)
