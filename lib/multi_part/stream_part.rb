@@ -1,5 +1,4 @@
 module MultiPart
-
   class StreamPart
     def initialize(stream)
       @stream = stream

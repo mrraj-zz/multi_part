@@ -1,16 +1,14 @@
 module MultiPart
-
   class MultiPartPost
     BOUNDARY = "----RubyMultiPartPost#{rand(1000000)}"
 
-    def initialize(url, fileparams)
-      @fileparams = fileparams
-      @url        = URI.parse(url)
+    def initialize(url, file_params)
+      @url         = URI.parse(url)
+      @file_params = file_params
     end
 
     def post
       @request = stream_request
-
       @response = Net::HTTP.new(@url.host, @url.port).start { |http| http.request(@request) }
     rescue Exception => exception
       STDOUT.puts exception
@@ -20,7 +18,7 @@ module MultiPart
 
     private
     def stream_request
-      request = Net::HTP::Post.new(@url.path)
+      request = Net::HTTP::Post.new(@url.path)
       request.content_length = multipart_stream.size
       request.content_type   = "multipart/form-data; boundary=#{BOUNDARY}"
       request.body_stream    = multipart_stream
