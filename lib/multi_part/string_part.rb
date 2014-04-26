@@ -1,5 +1,4 @@
 module MultiPart
-
   class StringPart
     def initialize(string)
       @stringio = StringIO.new(string)
