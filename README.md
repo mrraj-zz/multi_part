@@ -20,7 +20,7 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 
-## Contributing
+# Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
